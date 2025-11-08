@@ -23,61 +23,61 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 16px;
       padding: 20px;
-      max-width: 1200px;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
-    .gallery img {
-      width: 100%;
-      height: auto;
+    .gallery-item {
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: #ddd;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #111;
-      color: white;
-      margin-top: 30px;
+      padding: 1rem;
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.2rem;
-      }
+      color: #666;
     }
   </style>
 </head>
 <body>
   <header>돌의 내면 전시</header>
 
-  <main>
-    <div class="gallery">
-      <!-- 이미지 1~30 자동 나열 -->
-      <script>
-        for (let i = 1; i <= 30; i++) {
-          document.write(
-            `<img src="/assets/images/exhibit/stone${i}.jpg" alt="돌 ${i}">`
-          );
-        }
-      </script>
-    </div>
-  </main>
+  <div class="gallery" id="gallery"></div>
 
-  <footer>
-    © 2025 돌의 내면 전시 | Created by 최이현
-  </footer>
+  <footer>© 2025 최이현. All Rights Reserved.</footer>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+
+    for (let i = 1; i <= 30; i++) {
+      const img = document.createElement("img");
+      img.src = `assets/images/exhibit/stone${i}.jpg`;
+      img.alt = `돌 작품 ${i}`;
+
+      const item = document.createElement("div");
+      item.className = "gallery-item";
+      item.appendChild(img);
+
+      gallery.appendChild(item);
+    }
+  </script>
 </body>
 </html>

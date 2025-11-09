@@ -1,127 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>돌의 내면 | The Inner Life of Stones</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>돌의 내면 전시</title>
   <style>
     body {
       margin: 0;
       font-family: "Noto Sans KR", sans-serif;
       background-color: #f6f6f6;
-      color: #333;
+      color: #111;
       text-align: center;
     }
-
     header {
-      background-color: #111;
-      color: white;
-      padding: 1.5rem 0;
-      font-size: 2rem;
+      padding: 4rem 1rem 2rem;
+    }
+    h1 {
+      font-size: 2.2rem;
       letter-spacing: 2px;
+      margin-bottom: 1rem;
     }
-
-    .poster {
-      width: 100%;
-      max-width: 800px;
-      margin: 2rem auto;
-      border-radius: 10px;
-      display: block;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    p.subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 3rem;
     }
-
-    .desc {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin: 1.5rem auto;
-      max-width: 700px;
-      padding: 0 1rem;
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
     }
-
-    .buttons {
-      margin-top: 2rem;
-    }
-
     a.button {
       text-decoration: none;
-      color: white;
       background-color: #111;
-      padding: 0.8rem 1.5rem;
+      color: #fff;
+      padding: 0.9rem 1.6rem;
       border-radius: 30px;
-      margin: 0.5rem;
-      display: inline-block;
-      transition: 0.3s;
+      font-size: 1rem;
+      transition: background 0.3s ease;
     }
-
     a.button:hover {
       background-color: #333;
     }
-
-    .lang-toggle {
+    .lang-switch {
       margin-top: 2rem;
       font-size: 0.9rem;
-      color: #777;
-      cursor: pointer;
     }
-
+    .lang-switch a {
+      color: #555;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+    }
+    .lang-switch a:hover {
+      background-color: #ddd;
+    }
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #aaa;
-      padding-bottom: 2rem;
+      margin-top: 4rem;
+      font-size: 0.8rem;
+      color: #777;
     }
   </style>
 </head>
-
 <body>
-  <header id="title">돌의 내면</header>
-  <img src="assets/images/exhibit/poster.jpg" alt="전시 포스터" class="poster">
-
-  <p class="desc" id="desc">
-    보이지 않는 돌의 감정을 마주하다.  
-    이 전시는 돌이 품은 내면의 이야기와 고요한 시간을 시각적으로 탐구합니다.  
-    관찰의 시선을 거두면, 비로소 들려오는 돌의 속삭임을 느껴보세요.
-  </p>
-
-  <div class="buttons">
-    <a href="gallery.html" class="button" id="gallery-btn">갤러리 보기</a>
-    <a href="curation.html" class="button" id="curation-btn">큐레이터의 시선</a>
-  </div>
-
-  <div class="lang-toggle" id="lang-toggle">🌐 English Version</div>
-
-  <footer>© 2025 CHOI EHYOUN | The Inner Life of Stones</footer>
-
-  <script>
-    const langToggle = document.getElementById('lang-toggle');
-    const title = document.getElementById('title');
-    const desc = document.getElementById('desc');
-    const galleryBtn = document.getElementById('gallery-btn');
-    const curationBtn = document.getElementById('curation-btn');
-
-    let lang = 'ko';
-
-    langToggle.addEventListener('click', () => {
-      if (lang === 'ko') {
-        title.textContent = "The Inner Life of Stones";
-        desc.innerHTML = `Facing the unseen emotions of stones.<br>
-          This exhibition explores the silent, timeless stories within stones.<br>
-          When observation fades, their whispers begin to emerge.`;
-        galleryBtn.textContent = "View Gallery";
-        curationBtn.textContent = "Curator's Notes";
-        langToggle.textContent = "🌐 한국어 보기";
-        lang = 'en';
-      } else {
-        title.textContent = "돌의 내면";
-        desc.innerHTML = `보이지 않는 돌의 감정을 마주하다.<br>
-          이 전시는 돌이 품은 내면의 이야기와 고요한 시간을 시각적으로 탐구합니다.<br>
-          관찰의 시선을 거두면, 비로소 들려오는 돌의 속삭임을 느껴보세요.`;
-        galleryBtn.textContent = "갤러리 보기";
-        curationBtn.textContent = "큐레이터의 시선";
-        langToggle.textContent = "🌐 English Version";
-        lang = 'ko';
-      }
-    });
-  </script>
+  <header>
+    <h1>돌의 내면 전시</h1>
+    <p class="subtitle">단단함 속에 숨은 감정의 결을 들여다보다.</p>
+    <div class="btn-container">
+      <a href="gallery.html" class="button">갤러리 보기</a>
+      <a href="curation.html" class="button">큐레이션 보기</a>
+    </div>
+    <div class="lang-switch">
+      <a href="index-en.html">English</a>
+    </div>
+  </header>
+  <footer>© 2025 최이현 작가</footer>
 </body>
 </html>

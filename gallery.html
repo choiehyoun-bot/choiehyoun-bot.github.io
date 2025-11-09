@@ -1,85 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>돌의 내면 전시 - 갤러리</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>돌 작품 갤러리</title>
   <style>
-    body {
-      margin: 0;
-      font-family: "Noto Sans KR", sans-serif;
-      background-color: #f5f5f5;
-      color: #111;
-    }
-    header {
-      background-color: #111;
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 1.6rem;
-      letter-spacing: 2px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .gallery-item {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px;
     }
     .item-wrapper {
-      background-color: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .item-wrapper:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    .gallery-item {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
+      text-align: center;
+      display: inline-block;
     }
     .caption {
-      text-align: center;
-      font-size: 1rem;
+      font-size: 14px;
       color: #333;
-      padding: 0.8rem 0;
-    }
-    .lang-switch {
-      text-align: center;
-      margin: 1rem 0 2rem;
-    }
-    .lang-switch a {
-      color: #555;
-      text-decoration: none;
-      border: 1px solid #ccc;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      transition: background 0.3s ease;
-    }
-    .lang-switch a:hover {
-      background-color: #ddd;
     }
   </style>
 </head>
 <body>
-  <header>돌의 내면 전시 – 갤러리</header>
-  <div class="lang-switch">
-    <a href="gallery-en.html">English</a>
-  </div>
-  <main class="gallery" id="gallery"></main>
+  <div id="gallery"></div>
 
   <script>
     const galleryContainer = document.getElementById("gallery");
 
     for (let i = 1; i <= 30; i++) {
       const img = document.createElement("img");
-      img.src = `assets/images/exhibit/stone${i}.jpg`;
+      img.src = `https://choiehyoun-bot.github.io/assets/images/exhibit/stone${i}.jpg`;
       img.alt = `돌 작품 ${i}`;
       img.classList.add("gallery-item");
 

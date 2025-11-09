@@ -1,113 +1,103 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>돌의 내면 Exhibition</title>
-
   <style>
     body {
+      font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
-      padding: 0;
-      font-family: "Noto Sans KR", sans-serif;
-      background-color: #f9f9f9;
-      color: #111;
+      background-color: #fafafa;
+      color: #222;
       text-align: center;
-    }
-
-    header {
-      background-color: #111;
-      color: #fff;
-      padding: 1.5rem 0;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
-    }
-
-    .lang-toggle {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.2rem;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .poster {
-      max-width: 90%;
-      width: 340px;
-      margin: 2rem auto;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-    }
-
-    p {
-      max-width: 600px;
-      margin: 1rem auto;
       line-height: 1.6;
     }
-
-    .quote {
+    header {
+      background: #000;
+      color: #fff;
+      padding: 25px 0;
+      font-size: 1.8em;
+      letter-spacing: 1px;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: 0.3s;
+    }
+    .lang-toggle:hover {
+      background: #000;
+      color: #fff;
+    }
+    img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin: 25px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      font-size: 1.05em;
+      margin: 12px auto;
+      width: 85%;
+      max-width: 600px;
+    }
+    em {
+      display: block;
+      margin-top: 25px;
       font-style: italic;
       color: #555;
-      margin-top: 1.2rem;
     }
-
-    a.button {
+    .button {
       display: inline-block;
-      margin-top: 2rem;
-      background-color: #111;
+      background: #000;
       color: #fff;
-      padding: 0.8rem 1.4rem;
-      border-radius: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      margin-top: 25px;
       text-decoration: none;
-      transition: background 0.2s ease;
+      font-size: 1.1em;
+      transition: 0.3s;
     }
-
-    a.button:hover {
-      background-color: #333;
+    .button:hover {
+      background: #444;
     }
   </style>
 </head>
-
 <body>
-  <header id="title-ko">돌의 내면 Exhibition</header>
-  <header id="title-en" style="display:none;">The Inner Side of Stones</header>
+  <header>돌의 내면 Exhibition</header>
+  <div class="lang-toggle" onclick="toggleLang()">ENG / 한국어</div>
 
-  <button class="lang-toggle" id="langToggle">ENG / 한국어</button>
+  <section id="kr">
+    <img src="https://choiehyoun-bot.github.io/assets/images/exhibit/poster.jpg" alt="전시 포스터">
+    <p>세상에 존재하는 모든 돌에는 저마다의 이야기가 숨겨져 있습니다.</p>
+    <p>이번 전시는 ‘돌의 내면’을 통해 고요함과 감정을 시각적으로 탐구합니다.</p>
+    <em>“시간이 깎은 표면 속엔, 인간보다 깊은 숨이 있다.”</em>
+    <a href="gallery.html" class="button">작품 보러가기</a>
+  </section>
 
-  <main>
-    <img src="assets/images/exhibit/poster.jpg" alt="전시 포스터" class="poster" />
-
-    <div id="text-ko">
-      <p>세상에 존재하는 모든 돌에는 저마다의 이야기가 숨어 있습니다.</p>
-      <p>이번 전시는 ‘돌의 내면’을 통해 고요함과 감정을 시각적으로 탐구합니다.</p>
-      <p class="quote">“시간이 깎은 표면 속엔, 인간보다 깊은 숨이 있다.”</p>
-    </div>
-
-    <div id="text-en" style="display:none;">
-      <p>Every stone in the world holds a story of its own.</p>
-      <p>This exhibition, <strong>The Inner Side of Stones</strong>, explores tranquility and emotion through visual form.</p>
-      <p class="quote">“Within the surface shaped by time lies a breath deeper than humankind.”</p>
-    </div>
-
-    <a href="gallery.html" class="button" id="view-btn-ko">작품 보러가기</a>
-    <a href="gallery.html" class="button" id="view-btn-en" style="display:none;">View the Works</a>
-  </main>
+  <section id="en" style="display:none;">
+    <img src="https://choiehyoun-bot.github.io/assets/images/exhibit/poster.jpg" alt="Exhibition Poster">
+    <p>Every stone in the world holds its own untold story.</p>
+    <p>This exhibition, <strong>“Inside the Stone”</strong>, explores serenity and emotion through visual interpretation.</p>
+    <em>“Within the time-worn surface lies a breath deeper than humanity.”</em>
+    <a href="gallery.html" class="button">View Gallery</a>
+  </section>
 
   <script>
-    const toggleBtn = document.getElementById('langToggle');
-    const koElements = ['title-ko', 'text-ko', 'view-btn-ko'];
-    const enElements = ['title-en', 'text-en', 'view-btn-en'];
-
-    toggleBtn.addEventListener('click', () => {
-      const isKorean = document.getElementById('title-ko').style.display !== 'none';
-
-      koElements.forEach(id => document.getElementById(id).style.display = isKorean ? 'none' : 'block');
-      enElements.forEach(id => document.getElementById(id).style.display = isKorean ? 'block' : 'none');
-    });
+    function toggleLang() {
+      const kr = document.getElementById('kr');
+      const en = document.getElementById('en');
+      kr.style.display = kr.style.display === 'none' ? 'block' : 'none';
+      en.style.display = en.style.display === 'none' ? 'block' : 'none';
+    }
   </script>
 </body>
 </html>

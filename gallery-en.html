@@ -3,54 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stone Art Gallery</title>
+  <title>Inner Surface of Stone - Gallery</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
       margin: 0;
-      padding: 20px;
+      font-family: "Noto Sans", sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
     }
-    h1 {
+    header {
+      background-color: #111;
+      color: #fff;
       text-align: center;
-      margin-bottom: 30px;
+      padding: 1.5rem 0;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .item-wrapper {
-      text-align: center;
+      background-color: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .item-wrapper:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     .gallery-item {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-    .gallery-item:hover {
-      transform: scale(1.05);
+      height: 220px;
+      object-fit: cover;
+      display: block;
     }
     .caption {
-      margin-top: 8px;
-      font-size: 14px;
+      text-align: center;
+      font-size: 1rem;
       color: #333;
+      padding: 0.8rem 0;
+    }
+    .lang-switch {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+    .lang-switch a {
+      color: #555;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      transition: background 0.3s ease;
+    }
+    .lang-switch a:hover {
+      background-color: #ddd;
     }
   </style>
 </head>
 <body>
-  <h1>Stone Art Gallery</h1>
-  <div id="gallery" class="gallery"></div>
+  <header>Inner Surface of Stone – Gallery</header>
+  <div class="lang-switch">
+    <a href="gallery.html">한국어</a>
+  </div>
+  <main class="gallery" id="gallery"></main>
 
   <script>
     const galleryContainer = document.getElementById("gallery");
 
     for (let i = 1; i <= 30; i++) {
       const img = document.createElement("img");
-      img.src = `https://choiehyoun-bot.github.io/assets/images/exhibit/stone${i}.jpg`;
-      img.alt = `Stone artwork ${i}`;
+      img.src = `assets/images/exhibit/stone${i}.jpg`;
+      img.alt = `Stone Artwork ${i}`;
       img.classList.add("gallery-item");
 
       const caption = document.createElement("p");
@@ -67,3 +97,4 @@
   </script>
 </body>
 </html>
+

@@ -3,75 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>돌의 내면 전시 - QR 안내</title>
+  <title>QR 안내 | 광물 속의 빛나는 내면</title>
   <style>
     body {
       margin: 0;
       font-family: "Noto Sans KR", sans-serif;
-      background-color: #fafafa;
-      color: #222;
-      text-align: center;
+      background-color: #f5f5f5;
+      color: #111;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      text-align: center;
     }
-    h1 {
+
+    header {
       font-size: 1.8rem;
-      margin-bottom: 0.6rem;
-      letter-spacing: 1px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      color: #111;
+      position: relative;
     }
+
+    #lang-toggle {
+      position: absolute;
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #111;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    main {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      max-width: 480px;
+    }
+
     p {
-      margin: 0.5rem 0 1.5rem;
-      color: #444;
-      font-size: 1rem;
+      margin: 1rem 0;
+      line-height: 1.6;
     }
-    .btns {
+
+    .btn-container {
       display: flex;
+      justify-content: center;
       gap: 1rem;
-    }
-    a {
-      text-decoration: none;
-      background: #111;
-      color: #fff;
-      padding: 0.7rem 1.4rem;
-      border-radius: 30px;
-      transition: background 0.3s;
-    }
-    a:hover {
-      background: #333;
-    }
-    img {
-      width: 160px;
       margin-top: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
-    .lang-switch {
-      margin-top: 1rem;
-    }
-    .lang-switch a {
-      color: #555;
+
+    a.button {
+      background-color: #111;
+      color: white;
       text-decoration: none;
-      border: 1px solid #ccc;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
+      padding: 0.8rem 1.3rem;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    a.button:hover {
+      background-color: #333;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.4rem;
+      }
+      #lang-toggle {
+        right: -80px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>돌의 내면 전시</h1>
-  <p>“단단함 속의 감정, 그 표면에 새겨진 시간.”</p>
-  <div class="btns">
-    <a href="gallery.html">갤러리 보기</a>
-    <a href="curation.html">큐레이션 보기</a>
-  </div>
+  <header>
+    <span id="title-ko">광물 속의 빛나는 내면</span>
+    <span id="title-en" style="display:none;">The Radiant Inner Nature of Minerals</span>
+    <button id="lang-toggle">EN</button>
+  </header>
 
-  <img src="assets/images/qr-poster.jpg" alt="전시 포스터" />
+  <main>
+    <section id="ko-content">
+      <p>
+        자연 속 광물이 품은 고요한 빛과 질감을 탐구하는 전시입니다.<br/>
+        QR을 통해 방문하신 여러분을 환영합니다.
+      </p>
+      <p>감상하실 페이지를 선택해주세요.</p>
+    </section>
 
-  <div class="lang-switch">
-    <a href="qr-en.html">English</a>
-  </div>
+    <section id="en-content" style="display:none;">
+      <p>
+        Welcome to the exhibition exploring the quiet light and texture within natural minerals.<br/>
+        Please choose a page to begin your experience.
+      </p>
+    </section>
+
+    <div class="btn-container">
+      <a href="gallery.html" class="button" id="btn-gallery-ko">갤러리 보기</a>
+      <a href="curation.html" class="button" id="btn-curation-ko">큐레이션 보기</a>
+
+      <a href="gallery.html" class="button" id="btn-gallery-en" style="display:none;">View Gallery</a>
+      <a href="curation.html" class="button" id="btn-curation-en" style="display:none;">View Curation</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 이현 작가 | All Rights Reserved
+  </footer>
+
+  <script>
+    const langToggle = document.getElementById("lang-toggle");
+    const titleKo = document.getElementById("title-ko");
+    const titleEn = document.getElementById("title-en");
+    const koContent = document.getElementById("ko-content");
+    const enContent = document.getElementById("en-content");
+    const galleryKo = document.getElementById("btn-gallery-ko");
+    const curationKo = document.getElementById("btn-curation-ko");
+    const galleryEn = document.getElementById("btn-gallery-en");
+    const curationEn = document.getElementById("btn-curation-en");
+
+    let lang = "ko";
+    langToggle.addEventListener("click", () => {
+      lang = lang === "ko" ? "en" : "ko";
+      const isKo = lang === "ko";
+      titleKo.style.display = isKo ? "inline" : "none";
+      titleEn.style.display = isKo ? "none" : "inline";
+      koContent.style.display = isKo ? "block" : "none";
+      enContent.style.display = isKo ? "none" : "block";
+      galleryKo.style.display = isKo ? "inline-block" : "none";
+      curationKo.style.display = isKo ? "inline-block" : "none";
+      galleryEn.style.display = isKo ? "none" : "inline-block";
+      curationEn.style.display = isKo ? "none" : "inline-block";
+      langToggle.textContent = isKo ? "EN" : "KR";
+    });
+  </script>
 </body>
 </html>

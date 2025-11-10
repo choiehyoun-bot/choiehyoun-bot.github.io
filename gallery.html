@@ -3,38 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>돌 작품 갤러리</title>
+  <title>갤러리 | 광물 속의 빛나는 내면</title>
   <style>
-    .gallery-item {
-      width: 200px;
-      height: auto;
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #f9f9f9;
+      color: #111;
+      text-align: center;
+    }
+    header {
+      background-color: #111;
+      color: white;
+      padding: 1.5rem 0;
+      font-size: 1.8rem;
+      position: relative;
+    }
+    #lang-toggle {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      color: #111;
+      border: none;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
-      margin: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .item-wrapper {
-      text-align: center;
-      display: inline-block;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .item-wrapper:hover {
+      transform: scale(1.02);
+    }
+    .gallery-item {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
     }
     .caption {
-      font-size: 14px;
-      color: #333;
+      padding: 0.6rem;
+      font-size: 0.95rem;
+    }
+    a.button {
+      display: inline-block;
+      margin: 1rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #111;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: 0.2s;
+      font-weight: bold;
+    }
+    a.button:hover {
+      background-color: #333;
     }
   </style>
 </head>
 <body>
-  <div id="gallery"></div>
+  <header>
+    <span id="title-ko">광물 갤러리</span>
+    <span id="title-en" style="display:none;">Mineral Gallery</span>
+    <button id="lang-toggle">EN</button>
+  </header>
+
+  <main>
+    <div id="gallery"></div>
+
+    <a href="index.html" class="button" id="btn-back-ko">메인으로</a>
+    <a href="index.html" class="button" id="btn-back-en" style="display:none;">Back to Main</a>
+  </main>
 
   <script>
     const galleryContainer = document.getElementById("gallery");
 
     for (let i = 1; i <= 30; i++) {
       const img = document.createElement("img");
-      img.src = `https://choiehyoun-bot.github.io/assets/images/exhibit/stone${i}.jpg`;
-      img.alt = `돌 작품 ${i}`;
+      img.src = `assets/images/exhibit/stone${i}.jpg`;
+      img.alt = `광물 작품 ${i}`;
       img.classList.add("gallery-item");
 
       const caption = document.createElement("p");
-      caption.textContent = `돌 작품 ${i}`;
+      caption.textContent = `광물 작품 ${i}`;
       caption.classList.add("caption");
 
       const wrapper = document.createElement("div");
@@ -44,6 +109,28 @@
 
       galleryContainer.appendChild(wrapper);
     }
+
+    const langToggle = document.getElementById("lang-toggle");
+    const titleKo = document.getElementById("title-ko");
+    const titleEn = document.getElementById("title-en");
+    const backKo = document.getElementById("btn-back-ko");
+    const backEn = document.getElementById("btn-back-en");
+
+    let lang = "ko";
+    langToggle.addEventListener("click", () => {
+      lang = lang === "ko" ? "en" : "ko";
+      const isKo = lang === "ko";
+      langToggle.textContent = isKo ? "EN" : "KR";
+      titleKo.style.display = isKo ? "inline" : "none";
+      titleEn.style.display = isKo ? "none" : "inline";
+      backKo.style.display = isKo ? "inline-block" : "none";
+      backEn.style.display = isKo ? "none" : "inline-block";
+
+      const captions = document.querySelectorAll(".caption");
+      captions.forEach((cap, i) => {
+        cap.textContent = isKo ? `광물 작품 ${i + 1}` : `Mineral Piece ${i + 1}`;
+      });
+    });
   </script>
 </body>
 </html>
